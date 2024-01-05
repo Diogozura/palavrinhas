@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const response = await axios.post('https://dancxz.pythonanywhere.com/api/pseudopalavra/gerarpseudopalavra', req.body);
+    const response = await axios.post(`${process.env.API_URL}/pseudopalavra/gerarpseudopalavra`, req.body);
     res.json(response.data);
   } catch (error) {
     console.error('Erro ao buscar a palavra gerada:', error);

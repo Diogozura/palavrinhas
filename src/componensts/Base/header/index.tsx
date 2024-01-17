@@ -36,20 +36,19 @@ export default function Header() {
         setAnchorElUser(null);
     };
     return (<>
-        <AppBar position="absolute" sx={{bgcolor: themes.colors.azulClaro}}>
+        <AppBar position="static" sx={{bgcolor: themes.colors.azulClaro}}>
             <Container maxWidth="xl" >
                 <Toolbar disableGutters>
                     <AutoStoriesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
-                        variant="h6"
+                        variant="h4"
                         noWrap
                         component="h1"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            
                             fontWeight: 700,
-                            letterSpacing: '.3rem',
+                            letterSpacing: '.2rem',
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
@@ -69,8 +68,8 @@ export default function Header() {
                             flexGrow: 1,
                             fontWeight: 700,
                             letterSpacing: '.1rem',
-                            color: 'inherit',
                             textDecoration: 'none',
+                           
                         }}
                     >
                         Gerador de Palavrinhas

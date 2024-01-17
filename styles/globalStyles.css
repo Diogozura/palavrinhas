@@ -22,12 +22,3 @@
     cursor: pointer;
 }
 
-a{
-    text-decoration: none;
-    color: #000000;
-    text-decoration: underline;
-    &:hover{    
-        color: rgba(255, 255, 255, 0.663);
-        text-decoration: underline;
-        }
-}

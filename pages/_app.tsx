@@ -10,6 +10,7 @@ import { NextSeo } from 'next-seo';
 import { MyContextProvider } from '../src/componensts/contexts/inputs';
 import React from 'react';
 import 'react-toastify/dist/ReactToastify.min.css';
+import PremisionCookie from '@/src/componensts/Base/permisonCookie';
 
  
 
@@ -27,7 +28,19 @@ export default function App({ Component, pageProps }: AppProps) {
         {
           property: 'Back-end',
           content: 'Danilo Silva',
-        },]}
+          },]}
+          openGraph={{
+            type: 'website',
+            url: 'https://www.clinicapalavrinhas.com.br',
+            title: 'Gerador de palavras',
+            description: 'Por meio da combinação de sílabas e vogais, desenvolvemos um gerador de palavras que proporciona criação "aleatória". Este projeto é direcionado ao público infantil, especialmente aqueles que utilizam fornos, visando estimular a linguagem das crianças. A variedade de palavras geradas oferece uma abordagem única para promover a comunicação e o aprendizado de forma lúdica e envolvente.',
+            images: [
+              {
+                url: 'https://www.clinicapalavrinhas.com.br/banner.png',
+                alt: 'Banner do gerador de palavras - palavrinhas',
+              },
+            ],
+          }}
       />
 
       <Head>
@@ -36,8 +49,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
         <link rel="manifest" href="./favicon/site.webmanifest" />
-
+        <link rel="canonical" href={`https://www.clinicapalavrinhas.com.br` }/>
         <meta name="keywords" content="Palavras , gerador de palavras" />
+        <meta name="google-adsense-account" content={`ca-pub-${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}></meta>
         <meta name="author" content="Diogo zura" />
         {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
 
@@ -59,7 +73,13 @@ export default function App({ Component, pageProps }: AppProps) {
               `
         }}
       />
-     
+      <Script
+            id="adsbygoogle-init"
+            async
+            strategy="lazyOnload"
+            crossOrigin="anonymous"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}
+          />
 
       <ThemeProvider theme={theme}>
         <MyContextProvider>

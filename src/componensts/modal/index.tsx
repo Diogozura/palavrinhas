@@ -8,7 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { Fab, Typography } from '@mui/material';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
+
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -32,11 +32,8 @@ export default function GrandePalavra({ palavra }: any) {
 
     return (
         <React.Fragment>
-            <Fab variant="extended"  onClick={handleClickOpen}>
-                <MenuBookIcon sx={{ mr: 1 ,}}  />
-                {palavra}
-            </Fab>
-            
+            <Typography  variant='h3' fontWeight={600} component={'h4'} sx={{textDecoration: 'underline'}} textTransform={'uppercase'} onClick={handleClickOpen}>{palavra}</Typography>
+ 
             <Dialog
                 open={open}
                 TransitionComponent={Transition}
@@ -45,14 +42,10 @@ export default function GrandePalavra({ palavra }: any) {
                 aria-describedby="alert-dialog-slide-description"
             >
                 <DialogTitle>
-                    <Typography variant='h2' color={'Highlight'} textTransform={'uppercase'}>
+                    <Typography variant='h2' fontWeight={600} component={'h3'} textTransform={'uppercase'}>
                         {palavra}
                     </Typography>
                 </DialogTitle>
-
-                <DialogActions>
-                    <Button onClick={handleClose}>Sair</Button>
-                </DialogActions>
             </Dialog>
         </React.Fragment>
     );

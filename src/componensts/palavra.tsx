@@ -1,39 +1,35 @@
 // WordGenerator.tsx
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Paper from '@mui/material/Paper';
 import {
   Alert,
   Autocomplete,
-  Box,
   Button,
   FormControl,
   Grid,
-  InputLabel,
-  MenuItem,
-  Select,
+
   Stack,
   TextField,
-  Typography,
+
 } from '@mui/material';
 import GrandePalavra from './modal';
 import { themes } from '@/styles/theme';
-import animationData from '../../public/loading.json';
-import Lottie from 'lottie-react';
 
+import DeviceUnknownIcon from '@mui/icons-material/DeviceUnknown';
+import Link from 'next/link';
+import { Carregando } from '../common/Carregando';
 interface WordGeneratorProps { }
-
 
 const WordGenerator: React.FC<WordGeneratorProps> = () => {
   const [vogais, setVogais] = useState<string[]>(['a', 'o', 'i']);
   const [consoantes, setConsoantes] = useState<string[]>(['b', 'c', 'd', 'f']);
   const [qtdPalavras, setQtdPalavras] = useState<number>(1);
   const [generatedWord, setGeneratedWord] = useState<string[]>([]);
-  const [showButton, setShowButton] = useState(true);
   const [erroSelecaoConsoantes, setErroSelecaoConsoantes] = useState<string | null>(null);
   const [erroSelecaoVogais, setErroSelecaoVogais] = useState<string | null>(null);
+  const [carregando, setCarregando] = useState<boolean | null>(true);
 
   const handleGenerateWord = async () => {
+    setCarregando(true)
     try {
       const response = await fetch('/api/geradorPalavras', {
         method: 'POST',
@@ -49,6 +45,7 @@ const WordGenerator: React.FC<WordGeneratorProps> = () => {
 
       const data = await response.json();
       setGeneratedWord(data.palavras);
+      setCarregando(false)
     } catch (error) {
       console.error('Erro ao buscar a palavra gerada:', error);
     }
@@ -62,11 +59,10 @@ const WordGenerator: React.FC<WordGeneratorProps> = () => {
       setErroSelecaoVogais('Selecione pelo menos 3 vogais.');
       return;
     }
-  
+
     // Se o número de consoantes for 3 ou mais, limpe a mensagem de erro
     setErroSelecaoConsoantes(null);
     setErroSelecaoVogais(null);
-    setShowButton(false);
     handleGenerateWord();
   };
 
@@ -79,62 +75,77 @@ const WordGenerator: React.FC<WordGeneratorProps> = () => {
 
   return (
     <>
-      <Grid container xs={12} padding={1} justifyContent={'space-around'} bgcolor={'#ffffff76'} borderRadius={5} border={'1px solid #000000'} boxShadow={'0px 4px 4px 0px #00000052'}>
-        <Grid item xs={8} padding={1} borderRadius={5} bgcolor={themes.colors.amarelo} border={'1px solid #000000'} boxShadow={'0px 4px 4px 0px #00000052'}>
-          <Typography component={'h2'} textAlign={'center'} variant='h2'>
-            {!showButton ? (
-              <Lottie animationData={animationData} loop={false} style={{ width: '90px', height: '90px' }} onComplete={() => setShowButton(true)} />
-            ) : generatedWord}
-          </Typography>
+      <Grid container xs={12} padding={1} justifyContent={'space-around'} borderRadius={5} >
+
+        <Grid item xs={10} width={'90%'} padding={2} height={'100px'} borderRadius={2} bgcolor={themes.colors.amarelo} justifyContent={'center'} textAlign={'center'} border={'1px solid #000000'} boxShadow={'0px 4px 4px 0px #00000052'}>
+          <GrandePalavra palavra={generatedWord} />
         </Grid>
+       
+          <Button variant="contained" sx={{
+            bgcolor: themes.colors.rosa, color: '#000', boxShadow: '1px solid #000000', m: 1, fontSize: '1.3rem', fontWeight: 700, '&:hover': {
+              backgroundColor: themes.colors.rosa, // Substitua pelo tom desejado
+            },
+            '&:focus': {
+              backgroundColor: themes.colors.rosa, // Substitua pelo tom desejado
+            },
+          }} onClick={handleAnimation}>
+            Start
+          </Button>
 
-        <Button variant="contained" sx={{ bgcolor: themes.colors.rosa, color: '#000000', borderRadius: '20px', m: 1 }} onClick={handleAnimation}>
-          Gerar Palavra
-        </Button>
+     
+        {carregando ? <Carregando/> : null}
+         
 
-        <Grid xs={12} mt={8} bgcolor={'#ffffff'} borderRadius={2} component={'section'} display={'flex'} flexWrap={'wrap'} justifyContent={'space-around'}>
+        <Grid xs={12} mt={5} bgcolor={'#ffffff'} borderRadius={2} boxShadow={'0px 4px 4px 0px #00000052'} component={'section'} display={'flex'} flexWrap={'wrap'} justifyContent={'space-around'}>
 
-          <Stack spacing={2}  m={2}>
-          <FormControl  fullWidth>
-            <Autocomplete
-              multiple
-              options={voagais}
-              value={vogais}
-              onChange={(_, newValue) => setVogais(newValue)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  variant="standard"
-                  label="Vogais"
-               
-                />
-              )}
+          <Stack spacing={2} m={2} flexDirection={'row'}>
+            <FormControl fullWidth >
+              
+              <Autocomplete
+                multiple
+                options={voagais}
+                value={vogais}
+                
+                onChange={(_, newValue) => setVogais(newValue)}
+                renderInput={(params) => (
+                  <TextField
+                  sx={{width: 280}}
+                    {...params}
+                    variant="standard"
+                    label="Vogais"
+                    color="secondary" focused
+                  />
+                )}
               />
               {erroSelecaoVogais && <Alert severity="error">{erroSelecaoVogais}</Alert>}
-          </FormControl>
-          </Stack>
-           
-          <Stack  spacing={2} m={2}>
-          <FormControl fullWidth>
-            <Autocomplete
-              multiple
-              options={consoantess}
-              value={consoantes}
-              onChange={(_, newValue) => setConsoantes(newValue)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  variant="standard"
-                  label="Consoantes"
-                
-                />
-              )}
-              />
-                            {erroSelecaoConsoantes && <Alert severity="error">{erroSelecaoConsoantes}</Alert>}
+            </FormControl>
+            <Link href='#vogal'><DeviceUnknownIcon /></Link>
 
-          </FormControl>
           </Stack>
-         
+
+          <Stack spacing={2} m={2} flexDirection={'row'}>
+            <FormControl fullWidth>
+              <Autocomplete
+                multiple
+                options={consoantess}
+                value={consoantes}
+                onChange={(_, newValue) => setConsoantes(newValue)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="standard"
+                    sx={{width: 280}}
+                    label="Consoantes"
+                    color="success" focused
+                  />
+                )}
+              />
+              {erroSelecaoConsoantes && <Alert severity="error">{erroSelecaoConsoantes}</Alert>}
+
+            </FormControl>
+            <Link href='#consoante'><DeviceUnknownIcon /></Link>
+          </Stack>
+
 
         </Grid>
       </Grid>

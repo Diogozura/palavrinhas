@@ -1,0 +1,10 @@
+# Block all crawlers for /accounts
+User-agent: *
+Disallow: /accounts
+Sitemap: https://www.clinicapalavrinhas.com.br/sitemap.xml
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+

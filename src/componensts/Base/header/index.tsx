@@ -53,7 +53,7 @@ export default function Header() {
                             textDecoration: 'none',
                         }}
                     >
-                        Gerador de Palavrinhas
+                        Gerador de pseudopalavras
                     </Typography>
 
 
@@ -72,7 +72,7 @@ export default function Header() {
                            
                         }}
                     >
-                        Gerador de Palavrinhas
+                        Gerador de pseudopalavras
                     </Typography>
                    
 

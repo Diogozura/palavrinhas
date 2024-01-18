@@ -21,7 +21,7 @@ interface WordGeneratorProps { }
 
 const WordGenerator: React.FC<WordGeneratorProps> = () => {
   const [vogais, setVogais] = useState<string[]>(['a', 'o', 'i']);
-  const [consoantes, setConsoantes] = useState<string[]>(['b', 'c', 'd', 'f']);
+  const [consoantes, setConsoantes] = useState<string[]>(['b', 'c', 'd']);
   const [qtdPalavras, setQtdPalavras] = useState<number>(1);
   const [generatedWord, setGeneratedWord] = useState<string[]>([]);
   const [erroSelecaoConsoantes, setErroSelecaoConsoantes] = useState<string | null>(null);

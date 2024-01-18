@@ -33,7 +33,7 @@ export default function Home() {
         <CssBaseline />
         <Head>
           <title>Gerador de pseudopalavras - clínica palavrinhas </title>
-          <meta name="description" content="Por meio da combinação de sílabas e vogais, desenvolvemos um gerador de palavras que proporciona criação 'aleatória'. Este projeto é direcionado ao público infantil, especialmente aqueles que utilizam fornos, visando estimular a linguagem das crianças. A variedade de palavras geradas oferece uma abordagem única para promover a comunicação e o aprendizado de forma lúdica e envolvente." />
+          <meta name="description" content="Por meio da combinação de sílabas e vogais, desenvolvemos um gerador de palavras que proporciona criação 'aleatória'. Este projeto é direcionado ao público infantil, especialmente aqueles que utilizam fonos, visando estimular a linguagem das crianças. A variedade de palavras geradas oferece uma abordagem única para promover a comunicação e o aprendizado de forma lúdica e envolvente." />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -53,7 +53,7 @@ export default function Home() {
             <BoxText id='gerador' title='Como funciona o gerador de palavras '
               text='Por meio da combinação de sílabas e vogais, desenvolvemos um gerador de palavras que proporciona criação "aleatória" . 
               <br/><br/>
-              Este projeto é direcionado ao público infantil, especialmente aqueles que utilizam fornos, visando estimular a linguagem das crianças. A variedade de palavras geradas oferece uma abordagem única para promover a comunicação e o aprendizado de forma lúdica e envolvente .'/>
+              Este projeto é direcionado ao público infantil, especialmente aqueles que utilizam fonos, visando estimular a linguagem das crianças. A variedade de palavras geradas oferece uma abordagem única para promover a comunicação e o aprendizado de forma lúdica e envolvente .'/>
             
             <BoxText id='pseudo' title='O que é pseudopalavras' text='
               Pseudopalavras são sequências de letras que seguem as regras de formação de palavras em uma língua, mas não têm significado real. Elas são frequentemente usadas em experimentos psicolinguísticos e testes cognitivos para avaliar habilidades linguísticas, como leitura, ortografia e memória verbal.

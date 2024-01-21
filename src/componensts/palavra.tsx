@@ -119,7 +119,7 @@ const WordGenerator: React.FC<WordGeneratorProps> = () => {
               />
               {erroSelecaoVogais && <Alert severity="error">{erroSelecaoVogais}</Alert>}
             </FormControl>
-            <Link href='#vogal'><DeviceUnknownIcon /></Link>
+            <Link href='#vogal'><DeviceUnknownIcon  fontSize="large" /></Link>
 
           </Stack>
 
@@ -143,7 +143,7 @@ const WordGenerator: React.FC<WordGeneratorProps> = () => {
               {erroSelecaoConsoantes && <Alert severity="error">{erroSelecaoConsoantes}</Alert>}
 
             </FormControl>
-            <Link href='#consoante'><DeviceUnknownIcon /></Link>
+            <Link href='#consoante'><DeviceUnknownIcon fontSize="large"/></Link>
           </Stack>
 
 

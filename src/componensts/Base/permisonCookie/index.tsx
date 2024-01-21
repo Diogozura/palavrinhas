@@ -61,7 +61,7 @@ export default function PermissionCookie({ ctx }: { ctx: any }) {
         action={action}
       >
         <Alert severity="warning">
-          <Typography variant="h5" component="h5">
+          <Typography variant="h5" component="p">
             Cookies <CookieIcon />
           </Typography>
           <Typography>Usamos cookies para otimizar nosso site e nosso serviço.</Typography>

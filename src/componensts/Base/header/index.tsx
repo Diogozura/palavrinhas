@@ -39,7 +39,7 @@ export default function Header() {
         <AppBar position="static" sx={{bgcolor: themes.colors.azulClaro}}>
             <Container maxWidth="xl" >
                 <Toolbar disableGutters>
-                    <AutoStoriesIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <AutoStoriesIcon color="action" fontSize="large" sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                     <Typography
                         variant="h4"
                         noWrap
@@ -49,7 +49,7 @@ export default function Header() {
                             display: { xs: 'none', md: 'flex' },
                             fontWeight: 700,
                             letterSpacing: '.2rem',
-                            color: 'inherit',
+                            color: '#000',
                             textDecoration: 'none',
                         }}
                     >
@@ -57,7 +57,7 @@ export default function Header() {
                     </Typography>
 
 
-                    <AutoStoriesIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <AutoStoriesIcon color="action"  fontSize="large" sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -67,7 +67,7 @@ export default function Header() {
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
                             fontWeight: 700,
-                            letterSpacing: '.1rem',
+                            color: '#000',
                             textDecoration: 'none',
                            
                         }}

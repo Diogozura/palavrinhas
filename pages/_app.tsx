@@ -51,15 +51,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="./favicon/site.webmanifest" />
         <link rel="canonical" href={`https://www.clinicapalavrinhas.com.br` }/>
         <meta name="keywords" content="Palavras , gerador de palavras" />
-        <meta name="google-adsense-account" content={`ca-pub-${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}></meta>
         <meta name="author" content="Diogo zura" />
         {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Script strategy="lazyOnload" async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
-      <Script async type="application/javascript"
-        src="https://news.google.com/swg/js/v1/swg-basic.js" />
+
       <Script
         strategy="lazyOnload"
         id="GOOGLE_ANALYTICS"
@@ -73,14 +71,7 @@ export default function App({ Component, pageProps }: AppProps) {
               `
         }}
       />
-      <Script
-            id="adsbygoogle-init"
-            async
-            strategy="lazyOnload"
-            crossOrigin="anonymous"
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.NEXT_PUBLIC_GOOGLE_ADS_CLIENT_ID}`}
-          />
-
+      
       <ThemeProvider theme={theme}>
         <MyContextProvider>
           <Component {...pageProps} />
